@@ -50,10 +50,10 @@ export interface TopStoriesState {
   error: string | null;
 }
 
-const NYT_API_KEY = process.env.NEXT_PUBLIC_NYT_API_KEY || process.env.NYT_API_KEY;
+const NYT_API_KEY = process.env.NEXT_PUBLIC_NYT_API_KEY;
 
 if (!NYT_API_KEY) {
-  console.warn('NYT_API_KEY is not set. Please add it to your .env.local file.');
+  console.warn('NEXT_PUBLIC_NYT_API_KEY is not set. Please add it to your .env.local file.');
 }
 
 export const fetchTopStories = async (section: string = 'home'): Promise<TopStoriesResponse> => {

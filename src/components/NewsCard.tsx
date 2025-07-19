@@ -40,6 +40,11 @@ const NewsCard: React.FC<NewsCardProps> = ({ article, className }) => {
             className="object-cover"
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             priority={false}
+            onError={(e) => {
+              // 隐藏图片加载失败的图片
+              const target = e.target as HTMLImageElement;
+              target.style.display = 'none';
+            }}
           />
           {article.kicker && (
             <div className="absolute top-2 left-2 bg-black/70 text-white px-2 py-1 rounded text-xs font-medium z-10">
