@@ -1,36 +1,113 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# NYT News Aggregator
+
+A comprehensive news aggregator platform built with Next.js, TypeScript, and The New York Times API. This application provides access to top stories, most popular articles, search functionality, book reviews, movie reviews, and archive access.
+
+## Features
+
+- **Top Stories**: Browse the latest top stories from various sections
+- **Most Popular**: View the most popular articles from the last 7 days
+- **Search**: Search through NYT articles with advanced filtering
+- **Books**: Explore book reviews and bestsellers
+- **Movies**: Browse movie reviews and ratings
+- **Archive**: Access historical articles by date
+
+## Tech Stack
+
+- **Framework**: Next.js 14 with App Router
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS
+- **UI Components**: shadcn/ui
+- **Icons**: Lucide React
+- **API**: The New York Times Developer API
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+
+- Node.js 18+
+- npm or yarn
+- NYT API Key
+
+### Installation
+
+1. Clone the repository:
+```bash
+git clone <repository-url>
+cd new-york-times
+```
+
+2. Install dependencies:
+```bash
+npm install
+```
+
+3. Set up environment variables:
+Create a `.env.local` file in the root directory and add your NYT API key:
+```env
+NYT_API_KEY=your_nyt_api_key_here
+```
+
+### Getting an NYT API Key
+
+1. Visit [The New York Times Developer Portal](https://developer.nytimes.com/)
+2. Create an account and sign in
+3. Go to "Apps" and create a new application
+4. Copy your API key from the application details
+5. Add it to your `.env.local` file
+
+### Running the Application
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Project Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+src/
+├── api/nyt/           # NYT API integrations
+│   ├── topStories.ts
+│   ├── mostPopular.ts
+│   ├── search.ts
+│   ├── books.ts
+│   ├── movies.ts
+│   └── archive.ts
+├── pages/             # Page components
+│   ├── TopStories.tsx
+│   ├── MostPopular.tsx
+│   ├── Search.tsx
+│   ├── Books.tsx
+│   ├── Movies.tsx
+│   └── Archive.tsx
+├── components/        # Reusable components
+│   ├── NewsCard.tsx
+│   ├── BookCard.tsx
+│   ├── MovieCard.tsx
+│   └── SearchBar.tsx
+└── utils/            # Utility functions
+    ├── formatDate.ts
+    └── handleError.ts
+```
 
-## Learn More
+## API Endpoints Used
 
-To learn more about Next.js, take a look at the following resources:
+- **Top Stories**: `/svc/topstories/v2/{section}.json`
+- **Most Popular**: `/svc/mostpopular/v2/viewed/{period}.json`
+- **Article Search**: `/svc/search/v2/articlesearch.json`
+- **Books**: `/svc/books/v3/lists/{date}/{list}.json`
+- **Movie Reviews**: `/svc/movies/v2/reviews/{type}.json`
+- **Archive**: `/svc/archive/v1/{year}/{month}.json`
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Contributing
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Add tests if applicable
+5. Submit a pull request
 
-## Deploy on Vercel
+## License
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+This project is licensed under the MIT License.
